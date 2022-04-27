@@ -1,11 +1,17 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { FC } from "react"
 
 const style={
     color:'#0070f3',
-    TextDecoder:'underline'
+    TextDecoder:'underline',
+    asda:'juna'
 }
-const ActiveLink = ({ text = 'none', href = '/none' }) => {
+interface Props{
+    text:String;
+    href:String;
+}
+const ActiveLink:FC <Props>= ({ text , href }) => {
     const {asPath}= useRouter()
     /**
      * El evento router permite obtener la informacion
@@ -14,7 +20,7 @@ const ActiveLink = ({ text = 'none', href = '/none' }) => {
      */
     return (
         <Link href={href}>
-            <a style={asPath===href ? style : null}>{text}</a>
+            <a style={asPath===href ? style : undefined}>{text}</a>
         </Link>
     )
 }
